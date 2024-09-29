@@ -10,15 +10,20 @@ class TextFormat implements ProfileFormatter
 
     public function setData($profile)
     {
-        $output = "Name: " . $profile->getName() . PHP_EOL;
-        $output .= "Story: " . $profile->getStory() . PHP_EOL;
-        
+        $output = "=============================\n";
+        $output .= "Name: " . $profile->getName() . "\n\n";
+        $output .= "Her Story:\n";
+        $output .= str_repeat("-", 30) . "\n"; 
+        $output .= $profile->getStory() . "\n";
+        $output .= str_repeat("-", 30) . "\n"; 
+        $output .= "=============================\n";
+
         $this->response = $output;
     }
 
     public function render()
     {
-        header('Content-Type: text');
+        header('Content-Type: text/plain');
         return $this->response;
     }
 }

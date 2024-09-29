@@ -10,7 +10,6 @@ class HTMLFormat implements ProfileFormatter
 
     public function setData($profile)
     {
-        // Start the HTML structure with Bootstrap CSS
         $output = <<<HTML
 <html lang="en">
 <head>
@@ -18,18 +17,45 @@ class HTMLFormat implements ProfileFormatter
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile of {$profile->getName()}</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .profile-header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+        }
+        .card {
+            margin-top: 20px;
+        }
+        .img-profile {
+            width: 400px
+            height: 400px;
+            object-fit: cover; 
+            border-radius: 0; 
+            margin-top: 30px; 
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Profile of {$profile->getName()}</h1>
+        <header class="profile-header text-center">
+            <h1>The Founder</h1>
+        </header>
         <div class="text-center">
-            <img src="https://www.auf.edu.ph/home/images/articles/bya.jpg" alt="Founder Image" class="img-fluid rounded-circle mb-4" style="max-width: 200px;">
+            <img src="https://www.auf.edu.ph/home/images/articles/bya.jpg" alt="Founder Image" class="img-fluid img-profile mb-4">
+            <h5>Dr. Barbara Yap Angeles</h5> 
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Story</h5>
+                <h5 class="card-title">Her Story:</h5>
                 <p class="card-text">{$profile->getStory()}</p>
             </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-primary">Contact</a>
+            <a href="#" class="btn btn-secondary">More About</a>
         </div>
     </div>
 
